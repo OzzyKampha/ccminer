@@ -1,8 +1,14 @@
-FROM ubuntu
+FROM		ubuntu:14.04
+MAINTAINER	Åsmund Kamphaug
 
-RUN apt-get update && apt-get install -y git && git clone https://github.com/luisvasquez/cpuminer-easy.git && \
-    apt-get install -y -q automake autoconf pkg-config libcurl4-openssl-dev libjansson-dev libssl-dev libgmp-dev make g++ && \
-    rm -rf /var/lib/apt/lists/*
-WORKDIR cpuminer-easy
-RUN ./build-linux.sh
-ENTRYPOINT ./cpuminer -a cryptonight -o stratum+tcp://xmr-eu.suprnova.cc:5222 -u Ozzykampha.worker1 -p passord
+RUN		apt-get update -qq
+
+RUN		apt-get install -qy automake autoconf pkg-config libcurl4-openssl-dev libssl-dev libjansson-dev libgmp-dev make g++ git
+
+RUN		git clone https://github.com/tpruvot/cpuminer-multi -b linux
+
+RUN		cd cpuminer-multi && ./build.sh
+
+WORKDIR		/cpuminer-multi
+ENTRYPOINT	["./cpuminer"]
+#ENTRYPOINT ./cpuminer -a cryptonight -o stratum+tcp://xmr-eu.suprnova.cc:5222 -u Ozzykampha.worker1 -p passord
