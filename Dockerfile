@@ -10,5 +10,5 @@ RUN		git clone https://github.com/tpruvot/cpuminer-multi -b linux
 RUN		cd cpuminer-multi && ./build.sh
 
 WORKDIR		/cpuminer-multi
-ENTRYPOINT	["./cpuminer","-a", "cryptonight","-o", "stratum+tcp://xmr-eu.suprnova.cc:5222","-u", "Ozzykampha.worker1", "-p", "passord"]
+ENTRYPOINT	["./cpuminer","-a", "cryptonight","-o", "stratum+tcp://xmr-eu.suprnova.cc:5222"]
 #ENTRYPOINT ./cpuminer -a cryptonight -o stratum+tcp://xmr-eu.suprnova.cc:5222 -u Ozzykampha.worker1 -p passord
