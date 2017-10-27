@@ -5,4 +5,4 @@ RUN apt-get update && apt-get install -y git && git clone https://github.com/lui
     rm -rf /var/lib/apt/lists/*
 WORKDIR cpuminer-easy
 RUN ./build-linux.sh
-CMD ./cpuminer -a cryptonight -o stratum+tcp://xmr-eu.suprnova.cc:5222 -u Ozzykampha.worker1 -p passord
+ENTRYPOINT ./cpuminer -a cryptonight -o stratum+tcp://xmr-eu.suprnova.cc:5222 -u Ozzykampha.worker1 -p passord
